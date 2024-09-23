@@ -94,14 +94,12 @@ class GitHubOAuthCallbackView(APIView):
         user_url = "https://api.github.com/user"
         headers = {"Authorization": "Bearer " + token}
         user_response = requests.get(user_url, headers=headers)
-        print(user_response.json())
         githubUser = {}
         githubUser["username"] = user_response.json()["login"]
 
         # Get user's GitHub repositories
         repo_url = "https://api.github.com/user/repos"
         repo_response = requests.get(repo_url, headers=headers)
-        print(repo_response.json())
         repos = repo_response.json()
 
         # Save GitHub token in DB
