@@ -21,13 +21,9 @@
      const code = this.$route.query.code 
      axios.get('http://localhost:8000/api/google-oauth-callback/?code='+code)  
       .then(response => {  
-        console.log(response.data)
         this.googleUserName = response.data['user']['name']
         this.googleUserEmail = response.data['user']['email']
         localStorage.setItem('google_user_id', this.googleUserEmail)
-        console.log(this.googleUserName)
-        console.log(this.googleUserEmail)
-        console.log(localStorage.getItem('google_user_id'))
       })  
       .catch(error => {  
         console.error(error)  
